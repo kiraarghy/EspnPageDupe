@@ -12,45 +12,52 @@ const Wrapper = styled.div`
 
 const NavWrapper = styled.nav`
   display: flex;
+  width: 100%;
   flex-direction: row;
-  font-weight: bold;
+
+  position: fixed;
+  justify-content: flex-end;
 `;
 
 const HeaderLeft = styled.span`
-  flex: 8;
   align-self: flex-start;
   margin: 5px;
+  font-weight: bold;
 `;
 
 const MenuImage = styled.img`height: 15px;`;
 
 const MenuButton = styled.button`
-  flex: 1;
-  align-self: flex-end;
   border: none;
-  background: white;
+  background: rgba(0, 0, 0, 0);
   float: right;
+  margin: 5px;
   &:hover ${MenuImage} {
     background: black;
   }
 `;
 
-const HeaderWrapper = styled.header``;
+const HeaderWrapper = styled.header`display: flex;`;
 
 class App extends Component {
   render() {
     return (
       <Wrapper>
         <NavWrapper>
-          <HeaderLeft>
-            <span>Kara.</span>
-          </HeaderLeft>
           <MenuButton>
             <MenuImage src={menuicon} />
           </MenuButton>
         </NavWrapper>
-        <HeaderWrapper />
-        <a href="https://icons8.com/icon/3096/Menu">Menu icon credits</a>
+        <HeaderWrapper>
+          <HeaderLeft>
+            <span>Kara.</span>
+          </HeaderLeft>
+        </HeaderWrapper>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/96/Toronto_-_ON_-_Toronto_Harbourfront7.jpg"
+          width="100%"
+          alt="CN Tower wikimedia"
+        />
       </Wrapper>
     );
   }
