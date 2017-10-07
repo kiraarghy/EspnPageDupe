@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import menuicon from "./menuicon.png";
-
-const Wrapper = styled.div`
-  font-family: "Roboto", sans-serif;
-  color: black;
-`;
+const Wrapper = styled.div`font-family: "Roboto", sans-serif;`;
 
 const SubHeader = `color: rgb(218, 218, 218);`;
 const HeaderBold = `font-weight: bold;`;
@@ -22,18 +17,38 @@ const NavWrapper = styled.nav`
 
 const HeaderLeft = styled.span`
   margin: 10px;
-  ${HeaderBold}
+  ${HeaderBold};
 `;
 
-const MenuImage = styled.img`height: 15px;`;
+const ButtonMenu = styled.div`
+  width: 20px;
+  border-color: #202020;
+`;
+
+const MenuSingle = ButtonMenu.extend`
+  height: 0px;
+  border-style: solid;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 1px 1px 0px 0px;
+`;
+
+const MenuDouble = ButtonMenu.extend`
+  height: 3px;
+  border-style: double;
+  border-width: 0px 0px 9px 0px;
+  border-radius: 1px;
+`;
 
 const MenuButton = styled.button`
   border: none;
   background: rgba(0, 0, 0, 0);
   float: right;
   margin: 10px 30px 10px 0px;
-  &:hover ${MenuImage} {
-    background: black;
+  &:hover ${MenuDouble} {
+    border-color: grey;
+  }
+  &:hover ${MenuSingle} {
+    border-color: grey;
   }
 `;
 
@@ -42,17 +57,12 @@ const TopLeftHeaderWrapper = styled.header`display: flex;`;
 const SecondHeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
-  height: 10%;
-  background: white;
   margin: 80px 10px 60px 10px;
 `;
 
 const HeaderBold1 = styled.header`${HeaderBold} ${Header1};`;
 
-const SubHeader1 = styled.header`
-  ${SubHeader};
-  ${Header1};
-`;
+const SubHeader1 = styled.header`${SubHeader} ${Header1};`;
 
 const ParallaxImg = styled.div`
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/96/Toronto_-_ON_-_Toronto_Harbourfront7.jpg");
@@ -77,15 +87,9 @@ const Article1Left = styled.section`
   margin: 10px;
 `;
 
-const HeaderBold2 = styled.header`
-${HeaderBold}
-${Header2}
-`;
+const HeaderBold2 = styled.header`${HeaderBold} ${Header2};`;
 
-const SubHeader2 = styled.header`
-  ${SubHeader};
-  ${Header2}
-`;
+const SubHeader2 = styled.header`${SubHeader} ${Header2};`;
 
 const Article1Right = styled.section`
   flex: 1;
@@ -98,7 +102,8 @@ class App extends Component {
       <Wrapper>
         <NavWrapper>
           <MenuButton>
-            <MenuImage src={menuicon} />
+            <MenuSingle />
+            <MenuDouble />
           </MenuButton>
         </NavWrapper>
         <TopLeftHeaderWrapper>
@@ -127,20 +132,18 @@ class App extends Component {
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.{" "}
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
             <p>
-              {" "}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.{" "}
-            </p>{" "}
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <p>
-              {" "}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
