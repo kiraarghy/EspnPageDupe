@@ -3,10 +3,7 @@ import styled from "styled-components";
 
 import menuicon from "./menuicon.png";
 
-const Wrapper = styled.div`
-  font-family: "Roboto", sans-serif;
-  color: black;
-`;
+const Wrapper = styled.div`font-family: "Roboto", sans-serif;`;
 
 const SubHeader = `color: rgb(218, 218, 218);`;
 const HeaderBold = `font-weight: bold;`;
@@ -22,7 +19,7 @@ const NavWrapper = styled.nav`
 
 const HeaderLeft = styled.span`
   margin: 10px;
-  ${HeaderBold}
+  ${HeaderBold};
 `;
 
 const MenuImage = styled.img`height: 15px;`;
@@ -42,8 +39,6 @@ const TopLeftHeaderWrapper = styled.header`display: flex;`;
 const SecondHeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
-  height: 10%;
-  background: white;
   margin: 80px 10px 60px 10px;
 `;
 
@@ -77,14 +72,11 @@ const Article1Left = styled.section`
   margin: 10px;
 `;
 
-const HeaderBold2 = styled.header`
-${HeaderBold}
-${Header2}
-`;
+const HeaderBold2 = styled.header`${HeaderBold} ${Header2};`;
 
 const SubHeader2 = styled.header`
   ${SubHeader};
-  ${Header2}
+  ${Header2};
 `;
 
 const Article1Right = styled.section`
@@ -127,20 +119,18 @@ class App extends Component {
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.{" "}
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
             <p>
-              {" "}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.{" "}
-            </p>{" "}
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <p>
-              {" "}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
