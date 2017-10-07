@@ -8,19 +8,21 @@ const Wrapper = styled.div`
   color: black;
 `;
 
+const SubHeader = `color: rgb(218, 218, 218);`;
+const HeaderBold = `font-weight: bold;`;
+const Header1 = `font-size: 2em;`;
+const Header2 = `font-size: 1.5em;`;
+
 const NavWrapper = styled.nav`
   display: flex;
   width: 100%;
-  flex-direction: row;
-
   position: fixed;
   justify-content: flex-end;
 `;
 
 const HeaderLeft = styled.span`
-  align-self: flex-start;
   margin: 10px;
-  font-weight: bold;
+  ${HeaderBold}
 `;
 
 const MenuImage = styled.img`height: 15px;`;
@@ -45,16 +47,11 @@ const SecondHeaderWrapper = styled.header`
   margin: 80px 10px 60px 10px;
 `;
 
-const HeaderBold = styled.header`
-  flex: 2;
-  font-weight: bold;
-  font-size: 2em;
-`;
+const HeaderBold1 = styled.header`${HeaderBold} ${Header1};`;
 
-const SubHeader = styled.header`
-  flex: 1;
-  color: rgb(218, 218, 218);
-  font-size: 2em;
+const SubHeader1 = styled.header`
+  ${SubHeader};
+  ${Header1};
 `;
 
 const ParallaxImg = styled.div`
@@ -73,7 +70,6 @@ const Article1Wrapper = styled.article`
     flex-direction: row;
   }
   margin: 80px 10px 60px 10px;
-  justify-content: space-between;
 `;
 
 const Article1Left = styled.section`
@@ -81,14 +77,14 @@ const Article1Left = styled.section`
   margin: 10px;
 `;
 
-const HeaderBold1 = styled.header`
-  font-weight: bold;
-  font-size: 1.5em;
+const HeaderBold2 = styled.header`
+${HeaderBold}
+${Header2}
 `;
 
-const SubHeader1 = styled.header`
-  color: rgb(218, 218, 218);
-  font-size: 1.5em;
+const SubHeader2 = styled.header`
+  ${SubHeader};
+  ${Header2}
 `;
 
 const Article1Right = styled.section`
@@ -111,17 +107,17 @@ class App extends Component {
           </HeaderLeft>
         </TopLeftHeaderWrapper>
         <SecondHeaderWrapper>
-          <HeaderBold>Lorem Ipsum Dolor</HeaderBold>
-          <SubHeader>Sed do eiusmod tempor</SubHeader>
+          <HeaderBold1>Lorem Ipsum Dolor</HeaderBold1>
+          <SubHeader1>Sed do eiusmod tempor</SubHeader1>
         </SecondHeaderWrapper>
         <ParallaxImg />
         <Article1Wrapper>
           <Article1Left>
-            <HeaderBold1>Incididunt ut labore et dolore magna</HeaderBold1>
-            <SubHeader1>
+            <HeaderBold2>Incididunt ut labore et dolore magna</HeaderBold2>
+            <SubHeader2>
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip
-            </SubHeader1>
+            </SubHeader2>
           </Article1Left>
           <Article1Right>
             <p>
