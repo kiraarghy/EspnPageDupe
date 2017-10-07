@@ -42,12 +42,9 @@ const SecondHeaderWrapper = styled.header`
   margin: 80px 10px 60px 10px;
 `;
 
-const HeaderBold1 = styled.header`${HeaderBold} ${Header1};`;
+const HeaderBold1 = styled.header`${HeaderBold} ${Header1}`;
 
-const SubHeader1 = styled.header`
-  ${SubHeader};
-  ${Header1};
-`;
+const SubHeader1 = styled.header`${SubHeader} ${Header1}`;
 
 const ParallaxImg = styled.div`
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/96/Toronto_-_ON_-_Toronto_Harbourfront7.jpg");
@@ -72,11 +69,11 @@ const Article1Left = styled.section`
   margin: 10px;
 `;
 
-const HeaderBold2 = styled.header`${HeaderBold} ${Header2};`;
+const HeaderBold2 = styled.header`${HeaderBold} ${Header2}`;
 
 const SubHeader2 = styled.header`
-  ${SubHeader};
-  ${Header2};
+  ${SubHeader}
+  ${Header2}
 `;
 
 const Article1Right = styled.section`
