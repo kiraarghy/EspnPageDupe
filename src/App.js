@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import menuicon from "./menuicon.png";
-
 const Wrapper = styled.div`font-family: "Roboto", sans-serif;`;
 
 const SubHeader = `color: rgb(218, 218, 218);`;
@@ -22,15 +20,35 @@ const HeaderLeft = styled.span`
   ${HeaderBold};
 `;
 
-const MenuImage = styled.img`height: 15px;`;
+const ButtonMenu = styled.div`
+  width: 20px;
+  border-color: #202020;
+`;
+
+const MenuSingle = ButtonMenu.extend`
+  height: 0px;
+  border-style: solid;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 1px 1px 0px 0px;
+`;
+
+const MenuDouble = ButtonMenu.extend`
+  height: 3px;
+  border-style: double;
+  border-width: 0px 0px 9px 0px;
+  border-radius: 1px;
+`;
 
 const MenuButton = styled.button`
   border: none;
   background: rgba(0, 0, 0, 0);
   float: right;
   margin: 10px 30px 10px 0px;
-  &:hover ${MenuImage} {
-    background: black;
+  &:hover ${MenuDouble} {
+    border-color: grey;
+  }
+  &:hover ${MenuSingle} {
+    border-color: grey;
   }
 `;
 
@@ -42,9 +60,9 @@ const SecondHeaderWrapper = styled.header`
   margin: 80px 10px 60px 10px;
 `;
 
-const HeaderBold1 = styled.header`${HeaderBold} ${Header1}`;
+const HeaderBold1 = styled.header`${HeaderBold} ${Header1};`;
 
-const SubHeader1 = styled.header`${SubHeader} ${Header1}`;
+const SubHeader1 = styled.header`${SubHeader} ${Header1};`;
 
 const ParallaxImg = styled.div`
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/96/Toronto_-_ON_-_Toronto_Harbourfront7.jpg");
@@ -69,12 +87,9 @@ const Article1Left = styled.section`
   margin: 10px;
 `;
 
-const HeaderBold2 = styled.header`${HeaderBold} ${Header2}`;
+const HeaderBold2 = styled.header`${HeaderBold} ${Header2};`;
 
-const SubHeader2 = styled.header`
-  ${SubHeader}
-  ${Header2}
-`;
+const SubHeader2 = styled.header`${SubHeader} ${Header2};`;
 
 const Article1Right = styled.section`
   flex: 1;
@@ -87,7 +102,8 @@ class App extends Component {
       <Wrapper>
         <NavWrapper>
           <MenuButton>
-            <MenuImage src={menuicon} />
+            <MenuSingle />
+            <MenuDouble />
           </MenuButton>
         </NavWrapper>
         <TopLeftHeaderWrapper>
