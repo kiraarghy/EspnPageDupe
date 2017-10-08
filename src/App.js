@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import Menu from "./Menu";
 
 const Wrapper = styled.div`font-family: "Roboto", sans-serif;`;
 
@@ -16,13 +18,6 @@ const NavWrapper = styled.nav`
   justify-content: flex-end;
 `;
 
-const MenuWrapper = styled.div`
-  background: white;
-  radius: 5px;
-  height: 500px;
-  display: ${props => (props.visible ? "flex" : "none")};
-`;
-
 const HeaderLeft = styled.span`
   margin: 10px;
   ${HeaderBold};
@@ -33,12 +28,34 @@ const ButtonMenu = styled.div`
   border-color: #202020;
 `;
 
+const transformSingleToX = css`
+  border-radius: 1px;
+  position: relative;
+  top: 4px;
+  left: 1px;
+  z-index: 2;
+  transform: rotate(45deg);
+  transition: transform 1s ease-out;
+`;
+
 const MenuSingle = ButtonMenu.extend`
   height: 0px;
   border-style: solid;
   border-width: 0px 0px 3px 0px;
   border-radius: 1px 1px 0px 0px;
-  ${props => (props.visible ? "border-color: pink;" : "")};
+  ${props => (props.visible ? transformSingleToX : "")};
+`;
+
+const transformDoubleToX = css`
+  border-style: solid;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 1px;
+  position: relative;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  transform: rotate(-45deg);
+  transition: transform 1s ease-out;
 `;
 
 const MenuDouble = ButtonMenu.extend`
@@ -46,7 +63,7 @@ const MenuDouble = ButtonMenu.extend`
   border-style: double;
   border-width: 0px 0px 9px 0px;
   border-radius: 1px;
-  ${props => (props.visible ? "border-color: pink;" : "")};
+  ${props => (props.visible ? transformDoubleToX : "")};
 `;
 
 const MenuButton = styled.button`
@@ -124,7 +141,7 @@ class App extends Component {
             <MenuSingle visible={this.state.visible} />
             <MenuDouble visible={this.state.visible} />
           </MenuButton>
-          <MenuWrapper visible={this.state.visible}>Oranges</MenuWrapper>
+          <Menu visible={this.state.visible} />
         </NavWrapper>
         <TopLeftHeaderWrapper>
           <HeaderLeft>
