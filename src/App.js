@@ -10,9 +10,17 @@ const Header2 = `font-size: 1.5em;`;
 
 const NavWrapper = styled.nav`
   display: flex;
-  width: 100%;
   position: fixed;
+  width: 100%;
+  flex-direction: column;
   justify-content: flex-end;
+`;
+
+const MenuWrapper = styled.div`
+  background: white;
+  radius: 5px;
+  height: 500px;
+  display: ${props => (props.visible ? "flex" : "none")};
 `;
 
 const HeaderLeft = styled.span`
@@ -30,6 +38,7 @@ const MenuSingle = ButtonMenu.extend`
   border-style: solid;
   border-width: 0px 0px 3px 0px;
   border-radius: 1px 1px 0px 0px;
+  ${props => (props.visible ? "border-color: pink;" : "")};
 `;
 
 const MenuDouble = ButtonMenu.extend`
@@ -37,19 +46,15 @@ const MenuDouble = ButtonMenu.extend`
   border-style: double;
   border-width: 0px 0px 9px 0px;
   border-radius: 1px;
+  ${props => (props.visible ? "border-color: pink;" : "")};
 `;
 
 const MenuButton = styled.button`
   border: none;
+  align-self: flex-end;
   background: rgba(0, 0, 0, 0);
-  float: right;
   margin: 10px 30px 10px 0px;
-  &:hover ${MenuDouble} {
-    border-color: grey;
-  }
-  &:hover ${MenuSingle} {
-    border-color: grey;
-  }
+  outline: none;
 `;
 
 const TopLeftHeaderWrapper = styled.header`display: flex;`;
@@ -97,14 +102,29 @@ const Article1Right = styled.section`
 `;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick = e => {
+    this.state.visible
+      ? this.setState({ visible: false })
+      : this.setState({ visible: true });
+  };
+
   render() {
     return (
       <Wrapper>
         <NavWrapper>
-          <MenuButton>
-            <MenuSingle />
-            <MenuDouble />
+          <MenuButton onClick={this.handleClick}>
+            <MenuSingle visible={this.state.visible} />
+            <MenuDouble visible={this.state.visible} />
           </MenuButton>
+          <MenuWrapper visible={this.state.visible}>Oranges</MenuWrapper>
         </NavWrapper>
         <TopLeftHeaderWrapper>
           <HeaderLeft>
