@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import Menu from "./Menu";
 
 const Wrapper = styled.div`font-family: "Roboto", sans-serif;`;
 
@@ -10,9 +12,10 @@ const Header2 = `font-size: 1.5em;`;
 
 const NavWrapper = styled.nav`
   display: flex;
-  width: 100%;
   position: fixed;
-  justify-content: flex-end;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const HeaderLeft = styled.span`
@@ -25,11 +28,34 @@ const ButtonMenu = styled.div`
   border-color: #202020;
 `;
 
+const transformSingleToX = css`
+  border-radius: 1px;
+  position: relative;
+  top: 4px;
+  left: 1px;
+  z-index: 2;
+  transform: rotate(45deg);
+  transition: transform 1s ease-out;
+`;
+
 const MenuSingle = ButtonMenu.extend`
   height: 0px;
   border-style: solid;
   border-width: 0px 0px 3px 0px;
   border-radius: 1px 1px 0px 0px;
+  ${props => (props.visible ? transformSingleToX : "")};
+`;
+
+const transformDoubleToX = css`
+  border-style: solid;
+  border-width: 0px 0px 3px 0px;
+  border-radius: 1px;
+  position: relative;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  transform: rotate(-45deg);
+  transition: transform 1s ease-out;
 `;
 
 const MenuDouble = ButtonMenu.extend`
@@ -37,22 +63,21 @@ const MenuDouble = ButtonMenu.extend`
   border-style: double;
   border-width: 0px 0px 9px 0px;
   border-radius: 1px;
+  ${props => (props.visible ? transformDoubleToX : "")};
 `;
 
 const MenuButton = styled.button`
   border: none;
+  align-self: flex-end;
   background: rgba(0, 0, 0, 0);
-  float: right;
   margin: 10px 30px 10px 0px;
-  &:hover ${MenuDouble} {
-    border-color: grey;
-  }
-  &:hover ${MenuSingle} {
-    border-color: grey;
-  }
+  outline: none;
 `;
 
 const TopLeftHeaderWrapper = styled.header`display: flex;`;
+
+const ContentWrapper = styled.div`
+`;
 
 const SecondHeaderWrapper = styled.header`
   display: flex;
@@ -97,63 +122,80 @@ const Article1Right = styled.section`
 `;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick = e => {
+    this.state.visible
+      ? this.setState({ visible: false })
+      : this.setState({ visible: true });
+  };
+
   render() {
     return (
       <Wrapper>
         <NavWrapper>
-          <MenuButton>
-            <MenuSingle />
-            <MenuDouble />
+          <MenuButton onClick={this.handleClick}>
+            <MenuSingle visible={this.state.visible} />
+            <MenuDouble visible={this.state.visible} />
           </MenuButton>
+          <Menu visible={this.state.visible} />
         </NavWrapper>
         <TopLeftHeaderWrapper>
           <HeaderLeft>
             <span>Kara.</span>
           </HeaderLeft>
         </TopLeftHeaderWrapper>
-        <SecondHeaderWrapper>
-          <HeaderBold1>Lorem Ipsum Dolor</HeaderBold1>
-          <SubHeader1>Sed do eiusmod tempor</SubHeader1>
-        </SecondHeaderWrapper>
-        <ParallaxImg />
-        <Article1Wrapper>
-          <Article1Left>
-            <HeaderBold2>Incididunt ut labore et dolore magna</HeaderBold2>
-            <SubHeader2>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip
-            </SubHeader2>
-          </Article1Left>
-          <Article1Right>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Article1Right>
-        </Article1Wrapper>
+        <ContentWrapper visible={this.state.visible}>
+          <SecondHeaderWrapper>
+            <HeaderBold1>Lorem Ipsum Dolor</HeaderBold1>
+            <SubHeader1>Sed do eiusmod tempor</SubHeader1>
+          </SecondHeaderWrapper>
+          <ParallaxImg />
+          <Article1Wrapper>
+            <Article1Left>
+              <HeaderBold2>Incididunt ut labore et dolore magna</HeaderBold2>
+              <SubHeader2>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip
+              </SubHeader2>
+            </Article1Left>
+            <Article1Right>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </Article1Right>
+          </Article1Wrapper>
+        </ContentWrapper>
       </Wrapper>
     );
   }
