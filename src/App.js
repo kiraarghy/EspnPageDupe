@@ -15,7 +15,7 @@ const NavWrapper = styled.nav`
   position: fixed;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 const HeaderLeft = styled.span`
@@ -75,6 +75,9 @@ const MenuButton = styled.button`
 `;
 
 const TopLeftHeaderWrapper = styled.header`display: flex;`;
+
+const ContentWrapper = styled.div`
+`;
 
 const SecondHeaderWrapper = styled.header`
   display: flex;
@@ -148,49 +151,51 @@ class App extends Component {
             <span>Kara.</span>
           </HeaderLeft>
         </TopLeftHeaderWrapper>
-        <SecondHeaderWrapper>
-          <HeaderBold1>Lorem Ipsum Dolor</HeaderBold1>
-          <SubHeader1>Sed do eiusmod tempor</SubHeader1>
-        </SecondHeaderWrapper>
-        <ParallaxImg />
-        <Article1Wrapper>
-          <Article1Left>
-            <HeaderBold2>Incididunt ut labore et dolore magna</HeaderBold2>
-            <SubHeader2>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip
-            </SubHeader2>
-          </Article1Left>
-          <Article1Right>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </Article1Right>
-        </Article1Wrapper>
+        <ContentWrapper visible={this.state.visible}>
+          <SecondHeaderWrapper>
+            <HeaderBold1>Lorem Ipsum Dolor</HeaderBold1>
+            <SubHeader1>Sed do eiusmod tempor</SubHeader1>
+          </SecondHeaderWrapper>
+          <ParallaxImg />
+          <Article1Wrapper>
+            <Article1Left>
+              <HeaderBold2>Incididunt ut labore et dolore magna</HeaderBold2>
+              <SubHeader2>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip
+              </SubHeader2>
+            </Article1Left>
+            <Article1Right>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </Article1Right>
+          </Article1Wrapper>
+        </ContentWrapper>
       </Wrapper>
     );
   }
